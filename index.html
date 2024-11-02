@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Partner Finder</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input, button { padding: 10px; margin: 5px; }
+    </style>
+</head>
+<body>
+
+    <h1>Find Your Food Partner</h1>
+    
+    <!-- Registration Form -->
+    <h2>Register</h2>
+    <input type="text" id="name" placeholder="Your Name">
+    <input type="text" id="foodPreference" placeholder="Food Preference (e.g., Italian)">
+    <input type="text" id="location" placeholder="Your Location">
+    <button onclick="registerUser()">Register</button>
+
+    <h2>Find a Match</h2>
+    <input type="text" id="matchFoodPreference" placeholder="Food Preference">
+    <input type="text" id="matchLocation" placeholder="Location">
+    <button onclick="findMatch()">Find Match</button>
+
+    <p id="result"></p>
+
+    <script>
+        const serverUrl = 'http://localhost:5000';
+
+        async function registerUser() {
+            const name = document.getElementById('name').value;
+            const foodPreference = document.getElementById('foodPreference').value;
+            const location = document.getElementById('location').value;
+
+            const response = await fetch(`${serverUrl}/register`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, foodPreference, location })
+            });
+            const data = await response.json();
+            document.getElementById('result').innerText = data.message;
+        }
+
+        async function findMatch() {
+            const foodPreference = document.getElementById('matchFoodPreference').value;
+            const location = document.getElementById('matchLocation').value;
+
+            const response = await fetch(`${serverUrl}/match?foodPreference=${foodPreference}&location=${location}`);
+            const data = await response.json();
+            document.getElementById('result').innerText = data.match ? `Matched with ${data.match.name}!` : data.message;
+        }
+    </script>
+</body>
+</html>
