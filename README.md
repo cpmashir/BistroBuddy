@@ -11,12 +11,7 @@ C P M Ashir
 - [Technologies Used](#technologies-used)
 - [Features](#features)
 - [Requirements](#requirements)
-- [Setup Instructions](#setup-instructions)
-- [Usage](#usage)
-- [Endpoints](#endpoints)
-- [Changelog](#changelog)
-- [License](#license)
-
+  
 ## Demo
 Link to live demo: [BistroBuddy Live Demo](https://your-demo-link-here.com) (replace with actual link when available)
 
@@ -33,48 +28,5 @@ Link to live demo: [BistroBuddy Live Demo](https://your-demo-link-here.com) (rep
 - Node.js (v14 or higher)
 - npm (Node Package Manager)
 
-## Setup Instructions
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/yourusername/BistroBuddy.git
-   cd BistroBuddy
-2.Install backend dependencies:
 
-bash
-Copy code
-cd backend
-npm install express
-
-
-3.Start the backend server:
-bash
-Copy code
-node server.js
-
-
-4.Open the frontend:
-Open frontend/index.html in your web browser.
-Usage
-Register your name and your unique food preference.
-Use the match feature to find others who share your bizarre food tastes.
-Endpoints
-POST /register
-
-
-Description: 
-Register a user with their food preference.
-Request Body:
-json
-Copy code
-{
-  "name": "User Name",
-  "foodPreference": "Bizarre Food Preference"
-}
-GET /match
-
-Description: Find a food partner based on a specified food preference.
-Query Parameters:
-foodPreference: The bizarre food preference you want to match with.
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
 
